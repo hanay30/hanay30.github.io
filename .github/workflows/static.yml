@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Number Accepter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Enter a Scientific Number</h2>
+    <form id="scientificForm">
+        <label for="scientificNumber">Scientific Number:</label>
+        <input type="text" id="scientificNumber" name="scientificNumber" placeholder="e.g., 6.022e23" required>
+        <button type="button" onclick="checkScientificNumber()">Check</button>
+    </form>
+
+    <p id="resultMessage"></p>
+
+    <script>
+        function checkScientificNumber() {
+            var input = document.getElementById('scientificNumber').value.trim();
+
+            // Regular expression to validate scientific notation
+            var scientificPattern = /^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$/;
+
+            if (scientificPattern.test(input)) {
+                document.getElementById('resultMessage').innerText = "Valid scientific number!";
+            } else {
+                document.getElementById('resultMessage').innerText = "Not a valid scientific number. Please check your input.";
+            }
+        }
+    </script>
+</body>
+</html>
